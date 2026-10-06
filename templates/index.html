@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Sentiment Analyzer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: white;
+            width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Sentiment Analyzer</h1>
+
+        <p>Enter a review or sentence:</p>
+
+        <form method="POST">
+
+            <textarea name="text"
+                      placeholder="Example: I really love this product!"
+                      required></textarea>
+
+            <br>
+
+            <button type="submit">Analyze Sentiment</button>
+
+        </form>
+
+        {% if result %}
+            <div class="result">
+                Sentiment: {{ result["label"] }} <br>
+                Confidence: {{ "%.2f"|format(result["score"] * 100) }}%
+            </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
